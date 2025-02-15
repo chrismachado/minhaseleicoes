@@ -1,0 +1,16 @@
+spring:
+    application:
+        name: minhaseleicoes # Nome da aplicação
+    
+    datasource:
+        url: jdbc:postgresql://localhost:5432/minhaseleicoes # URL de conexão com o banco de dados PostgreSQL
+        username: postgres # Nome de usuário do banco de dados
+        password: 123 # Senha do banco de dados
+    
+    jpa:
+        hibernate:
+            ddl-auto: none # Configuração para o Hibernate atualizar o esquema do banco de dados automaticamente
+        show-sql: true # Exibir as consultas SQL no console
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect # Dialeto do Hibernate para o PostgreSQL
