@@ -32,45 +32,17 @@ const styles = StyleSheet.create({
     pickerItem: {
         fontSize: 16,
     },
-    scrollView: {
-        flex: 1,
+    noDataText: {
+        fontSize: 16,
+        color: '#666',
+        textAlign: 'center',
+        marginBottom: 20,
     },
-    candidatoItem: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        backgroundColor: '#fff',
-        padding: 15,
-        borderRadius: 10,
-        marginBottom: 10,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.2,
-        shadowRadius: 4,
-        elevation: 3,
-    },
-    avatarPlaceholder: {
-        width: 50,
-        height: 50,
-        borderRadius: 25,
-        backgroundColor: '#e0e0e0',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginRight: 15,
-    },
-    candidatoInfo: {
-        flex: 1,
-    },
-    candidate: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: '#333',
-    },
-    votes: {
+    legendaText: {
         fontSize: 14,
         color: '#666',
-    },
-    separator: {
-        height: 10,
+        textAlign: 'center',
+        marginTop: 10,
     },
     button: {
         backgroundColor: '#6200ee',
@@ -96,12 +68,6 @@ const styles = StyleSheet.create({
     errorText: {
         fontSize: 16,
         color: '#ff0000',
-        textAlign: 'center',
-        marginBottom: 20,
-    },
-    noDataText: {
-        fontSize: 16,
-        color: '#666',
         textAlign: 'center',
         marginBottom: 20,
     },
