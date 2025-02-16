@@ -46,11 +46,20 @@ const ResultsScreen = ({ navigation }: { navigation: NavigationProp<any> }) => {
         navigation.navigate('MainMenu');
     };
 
+    const handleCargoChange = (itemValue : number | undefined) => {
+        if (itemValue === undefined || itemValue.toString() == 'Selecione um cargo') {
+            setSelectedCargo(undefined);
+            setTopCandidatos([]);
+        } else {
+            setSelectedCargo(itemValue);
+        }    
+    };
+
     const [results, setResults] = useState<Result[]>([]);
     const [urnas, setUrnas] = useState<Urna[]>([]);
     const [topCandidatos, setTopCandidatos] = useState<Candidato[]>([]);
     const [cargos, setCargos] = useState<Cargo[]>([]);
-    const [selectedCargo, setSelectedCargo] = useState<number | undefined>(7);
+    const [selectedCargo, setSelectedCargo] = useState<number | undefined>(undefined);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -67,7 +76,8 @@ const ResultsScreen = ({ navigation }: { navigation: NavigationProp<any> }) => {
     };
 
     const fetchTopCandidatos = async (cargoId: number) => {
-        if (cargoId === undefined || cargoId === null) {
+        if (cargoId === undefined || cargoId === null || cargoId.toString() == 'Selecione um cargo') {
+            setTopCandidatos([]);
             return;
         }
 
@@ -94,7 +104,7 @@ const ResultsScreen = ({ navigation }: { navigation: NavigationProp<any> }) => {
 
     if (loading) {
         return (
-            <View style={styles.container}>
+            <View style={styles.containerLoading}>
                 <ActivityIndicator size="large" color="#6200ee" />
                 <Text style={styles.loadingText}>Carregando dados...</Text>
             </View>
@@ -110,7 +120,7 @@ const ResultsScreen = ({ navigation }: { navigation: NavigationProp<any> }) => {
         );
     }
 
-    if (topCandidatos.length == 0) {
+    if (topCandidatos.length == 0 && selectedCargo !== undefined && selectedCargo != 'Selecione um cargo') {
         return (
             <View style={styles.container}>
                 <Text style={styles.noDataText}>Nenhum dado encontrado.</Text>
@@ -131,14 +141,12 @@ const ResultsScreen = ({ navigation }: { navigation: NavigationProp<any> }) => {
             <View style={styles.pickerContainer}>
                 <Picker
                     selectedValue={selectedCargo}
-                    onValueChange={(itemValue) => {
-                        setSelectedCargo(itemValue);
-                    }}
+                    onValueChange={handleCargoChange}
                     style={styles.picker}
                     dropdownIconColor="#6200ee"
                     mode="dropdown"
                 >
-                    <Picker.Item label="Selecione um cargo" value={undefined} />
+                    <Picker.Item key={undefined} label="Selecione um cargo" value={undefined} />
                     {cargos.map((cargo) => (
                         <Picker.Item
                             key={cargo.cargoId}
