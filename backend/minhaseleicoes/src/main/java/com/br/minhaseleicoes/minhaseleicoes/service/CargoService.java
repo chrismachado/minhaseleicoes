@@ -15,7 +15,8 @@ public class CargoService {
     private CargoRepository cargoRepository;
 
     public List<Cargo> listarTodos() {
-        return cargoRepository.findAll();
+        // return cargoRepository.findAll();
+        return cargoRepository.findByEleicoesMunicipais();
     }
 
     public Cargo listarById(Long id) {

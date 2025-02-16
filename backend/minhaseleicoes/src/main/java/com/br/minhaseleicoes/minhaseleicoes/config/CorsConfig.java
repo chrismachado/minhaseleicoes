@@ -9,29 +9,36 @@ public class CorsConfig implements WebMvcConfigurer{
 
     @Override
     public void addCorsMappings(@SuppressWarnings("null") CorsRegistry registry) {
-        registry
-            .addMapping("/api/v1/resultados")
-            .allowedOrigins("http://localhost:8081")
-            .allowedMethods("GET")
-            .allowedHeaders("*");
 
         registry
-            .addMapping("/api/v1/urnas")
-            .allowedOrigins("http://localhost:8081")
-            .allowedMethods("GET")
+            .addMapping("/**")
+            .allowedOrigins("*")
+            .allowedMethods("*")
             .allowedHeaders("*");
 
-        registry
-            .addMapping("/api/v1/candidatos/**")
-            .allowedOrigins("http://localhost:8081")
-            .allowedMethods("GET")
-            .allowedHeaders("*");
+        // registry
+        //     .addMapping("/api/v1/resultados")
+        //     .allowedOrigins("http://localhost:8081")
+        //     .allowedMethods("GET")
+        //     .allowedHeaders("*");
 
-        registry
-            .addMapping("/api/v1/cargos/**")
-            .allowedOrigins("http://localhost:8081")
-            .allowedMethods("GET")
-            .allowedHeaders("*");
+        // registry
+        //     .addMapping("/api/v1/urnas")
+        //     .allowedOrigins("http://localhost:8081")
+        //     .allowedMethods("GET")
+        //     .allowedHeaders("*");
+
+        // registry
+        //     .addMapping("/api/v1/candidatos/**")
+        //     .allowedOrigins("http://localhost:8081")
+        //     .allowedMethods("GET")
+        //     .allowedHeaders("*");
+
+        // registry
+        //     .addMapping("/api/v1/cargos/**")
+        //     .allowedOrigins("http://localhost:8081")
+        //     .allowedMethods("GET")
+        //     .allowedHeaders("*");
     }
 
 }
